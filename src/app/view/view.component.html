@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+      <button class="btn btn-success" (click)="getNavigation('create', '')">Create New Project</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+      <table #productsTable class="display" style="width:100%">
+        <thead>
+        <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of projects; let i =index;">
+          <td>{{p.ProjectId}}</td>
+          <td>{{p.ProjectTitle}}</td>
+          <td>{{p.ProjectDescription}}</td>
+          <td>{{p.StartDate}}</td>
+          <td>{{p.EndDate}}</td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="getNavigation('view', p.ProjectId)">View</button>
+            <button type="button" class="btn btn-warning" (click)="getNavigation('update', p.ProjectId)">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

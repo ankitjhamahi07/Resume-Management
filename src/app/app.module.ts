@@ -9,17 +9,21 @@ import {HttpClientModule} from '@angular/common/http';
 import { EmpService } from './emp.service';
 import { environment } from '../environments/environment';
 import { ContactusComponent } from './contactus/contactus.component';
-import { ProjectListComponent } from './project-list/project-list.component';
-import { ProjectUpdateComponent } from 'src/app/project-list/project-update/project-update.component';
 import { ProjectService } from './project.service';
+import { ViewComponent } from './view/view.component';
+import { CreateComponent } from './create/create.component';
+import { UpdateComponent } from './update/update.component';
+import { ReadComponent } from './read/read.component';
 @NgModule({
   declarations: [
     AppComponent,
     EmpInfoComponent,
     EditUserComponent,
     ContactusComponent,
-    ProjectListComponent,
-    ProjectUpdateComponent,
+    ViewComponent,
+    CreateComponent,
+    UpdateComponent,
+    ReadComponent,
     
   ],
   imports: [
