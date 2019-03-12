@@ -1,25 +1,3 @@
-<br>
-<br>
-<nav class="Navbar">
-  <div class="l-Wrapper l-Wrapper--reset@sm-down">
-    <ul class="u-pullRight u-hidden@xs-down">
-      <li>
-        <a class="Navbar-btn Navbar-btn--main" (click)="downloadPDF()" target="_blank">Download 
-          <span>(pdf)</span>
-        </a>
-      </li>
-    </ul>
-    <ul>
-      <li><a href="#profile" target="_self"> Profile </a></li>
-      <li><a href="#skills" target="_self"> Skills </a></li>
-      <li><a href="https://www.linkedin.com/in/Ankitstrieder" target="_self"> Project </a></li>
-      <li><a href="https://twitter.com/Ankitstrieder" target="_self"> Interests </a></li>
-      
-      <!-- <li><a href="https://codepen.io/Ankitstrieder" target="_blank">Codepen</a></li> -->
-    </ul>
-  </div>
-</nav>
-
 <div *ngIf="employee">
 <div id="resume">
 <article class="l-Wrapper">
@@ -124,6 +102,12 @@
     </div>
   </section>
 </article>
+
+<br>
+<br>
+<div class="row justify-content-center">
+  <button type="submit" class="btn btn-info btn-lg" (click)="downloadPDF()" target="_blank">Download Resume </button>
+</div>
 
 <div class="l-Wrapper u-keyline">
   <div class="l-Footer">

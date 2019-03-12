@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmpInfoComponent } from './emp-info/emp-info.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rms';
+
+  constructor(private dow:EmpInfoComponent)
+  {
+
+  }
+
+  public downloadResume()
+  {
+    this.dow.downloadPDF();
+  }
 }

@@ -8,11 +8,18 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import {HttpClientModule} from '@angular/common/http';
 import { EmpService } from './emp.service';
 import { environment } from '../environments/environment';
+import { ContactusComponent } from './contactus/contactus.component';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { ProjectUpdateComponent } from 'src/app/project-list/project-update/project-update.component';
+import { ProjectService } from './project.service';
 @NgModule({
   declarations: [
     AppComponent,
     EmpInfoComponent,
     EditUserComponent,
+    ContactusComponent,
+    ProjectListComponent,
+    ProjectUpdateComponent,
     
   ],
   imports: [
@@ -27,7 +34,7 @@ import { environment } from '../environments/environment';
 
     
   ],
-  providers: [EmpService],
+  providers: [EmpService,EmpInfoComponent,ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
