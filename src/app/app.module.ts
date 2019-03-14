@@ -15,6 +15,17 @@ import { ViewComponent } from './view/view.component';
 import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
 import { ReadComponent } from './read/read.component';
+import { TableModule, Table } from 'primeng/table';
+import { ListempComponent } from './listemp/listemp.component';
+import {ToastModule} from 'primeng/toast';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DataTableModule, SliderModule, MessageService} from 'primeng/primeng';
+import { EmplistService } from './emplist.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {DropdownModule} from 'primeng/primeng';
+import {MultiSelectModule} from 'primeng/multiselect'
+import { SelectItem } from 'primeng/primeng';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +36,7 @@ import { ReadComponent } from './read/read.component';
     CreateComponent,
     UpdateComponent,
     ReadComponent,
+    ListempComponent,
     
   ],
   imports: [
@@ -35,12 +47,27 @@ import { ReadComponent } from './read/read.component';
     FormsModule,
     HttpClientModule,
     DataTablesModule,
+    TableModule,
+    
+    BrowserAnimationsModule,
+    DataTableModule,
+    DropdownModule,
+    MultiSelectModule,
+    SliderModule,
+    ToastModule,
+    ToastrModule.forRoot(),
+    
+    
+    
     //AngularFireAuthModule,
     //AngularFirestoreModule,
 
     
   ],
-  providers: [EmpService,EmpInfoComponent,ProjectService],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+],
+  providers: [EmpService,EmpInfoComponent,ProjectService,EmplistService,MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,7 @@ export class ProjectService {
   dtOptions: DataTables.Settings = {};
   projectList: Observable<project[]>;
   newproject : project;
-  readonly ROOT_URL:any ="http://54b8ba96.ngrok.io/api";
+  readonly ROOT_URL:string ="http://e00b0fc1.ngrok.io/api";
 
   constructor(private http: HttpClient) { }
 

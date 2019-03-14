@@ -1,0 +1,42 @@
+<p-table #dt [columns]="cols" [paginator]="true" [rows]="5" [value]="emp" sortMode="multiple" [multiSortMeta]="multiSortMeta">
+  
+    <ng-template pTemplate="caption">
+        <div style="text-align: right">        
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+            <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </div>
+    </ng-template>
+  
+  <!-- start column header -->
+  <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+               </th>
+        </tr>
+
+        <tr>
+            <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                <input *ngSwitchCase="'ProjectId'" placeholder ="ID Search" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                <input *ngSwitchCase="'EndDate'" placeholder ="Year Search" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+
+                <div *ngSwitchCase="'StartDate'">
+                    Value < {{yearFilter}}
+                    <i class="fa fa-close" (click)="yearFilter=null;dt.filter(null, col.field, col.filterMatchMode)" style="cursor:pointer" *ngIf="yearFilter"></i>
+                    <p-slider [style]="{'width':'100%','margin-top':'8px'}" [(ngModel)]="yearFilter" [min]="1970" [max]="2010" (onChange)="onYearChange($event, dt)"></p-slider>
+                </div>
+                <p-dropdown *ngSwitchCase="'ProjectDescription'" [options]="tech" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                <p-multiSelect *ngSwitchCase="'ProjectTitle'" [options]="name" defaultLabel="All Colors" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+            </th>
+            </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-car let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                    {{car[col.field]}}
+            </td>
+        </tr>
+        <p-toast [style]="{marginTop: '80px'}"></p-toast>
+    </ng-template>
+</p-table>
