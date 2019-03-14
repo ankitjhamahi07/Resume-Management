@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { DataTablesModule } from 'angular-datatables';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +34,7 @@ import { ReadComponent } from './read/read.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    DataTablesModule,
     //AngularFireAuthModule,
     //AngularFirestoreModule,
 

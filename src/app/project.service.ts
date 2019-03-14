@@ -13,9 +13,10 @@ import { map } from 'rxjs/operators';
 })
 export class ProjectService {
 
+  dtOptions: DataTables.Settings = {};
   projectList: Observable<project[]>;
   newproject : project;
-  readonly ROOT_URL:any ="http://67671ab0.ngrok.io/api";
+  readonly ROOT_URL:any ="http://54b8ba96.ngrok.io/api";
 
   constructor(private http: HttpClient) { }
 
@@ -29,16 +30,21 @@ export class ProjectService {
   createProject(data) {
     console.log(data.get("ProjectTitle"));
 
-    let body = new URLSearchParams();
+let body = new URLSearchParams();
+//body.set('ProjectId', "1" );
 body.set('ProjectTitle', data.get("ProjectTitle") );
-body.set('ProjectDescription', data.get("ProjectTitle"));
+body.set('ProjectDescription', data.get("ProjectDescription"));
 body.set('StartDate',data.get("StartDate") );
 body.set('EndDate',data.get("EndDate"));
+
 let options = {
   headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
 };
 
-    return this.http.post(this.ROOT_URL+'/Projects', body.toString(), options);
+//console.log(this.ROOT_URL+"\n"+'/Projects/1'+"\n"+ body.toString()+"\n"+options);
+
+    return this.http.post(this.ROOT_URL+'/Projects', body.toString(),options);
+    
   }
 
   updateProduct(data){

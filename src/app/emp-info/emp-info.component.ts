@@ -44,7 +44,7 @@ pdf.save(this.employee.EmployeeName+'_Resume.pdf'); // Generated PDF
 
 
   getEmployeeDetails(id:number) {
-    this.details.getEmployeeById(2)
+    this.details.getEmployeeById(1)
       .subscribe(data => {
         this.employee = data;
         

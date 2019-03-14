@@ -49,6 +49,7 @@ export const routes: Routes = [
 //       redirectTo: '/home',
 //       pathMatch: 'full'
 //   }
+// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

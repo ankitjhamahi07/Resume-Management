@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
-      <button class="btn btn-success" (click)="getNavigation('create', '')">Create New Project</button>
+      <button class="btn btn-success" (click)="getNavigation('create', '')"> <i class="fa fa-plus-square">Add New Project</i></button>
     </div>
   </div>
   <br>
   <div class="row">
     <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
-      <table #productsTable class="display" style="width:100%">
+      <!-- <table #productsTable class="display" style="width:100%"> -->
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="row-border hover">
         <thead>
         <tr>
         <th>Id</th>
@@ -18,7 +19,7 @@
         <th>Actions</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="projects">
         <tr *ngFor="let p of projects; let i =index;">
           <td>{{p.ProjectId}}</td>
           <td>{{p.ProjectTitle}}</td>
@@ -26,13 +27,22 @@
           <td>{{p.StartDate}}</td>
           <td>{{p.EndDate}}</td>
           <td>
-            <button type="button" class="btn btn-success" (click)="getNavigation('view', p.ProjectId)">View</button>
-            <button type="button" class="btn btn-warning" (click)="getNavigation('update', p.ProjectId)">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-success" (click)="getNavigation('view', p.ProjectId)"><i class="fa fa-eye" style="font: size 3px"></i></button>
+            <button type="button" class="btn btn-warning" (click)="getNavigation('update', p.ProjectId)"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
           </td>
         </tr>
-        </tbody>
-      </table>
+      </tbody>
+        <tfoot>
+            <tr>
+              <th><input type="text" placeholder="Search ID" name="search-id"/></th>
+              <th><input type="text" placeholder="Search Name" name="search-first-name"/></th>
+              <th><input type="text" placeholder="Search Description" name="search-description"/></th>
+              <th><input type="text" placeholder="Search StartDate" name="search-startdate"/></th>
+              <th><input type="text" placeholder="Search EndDate" name="search-enddate"/></th>
+             </tr>
+          </tfoot>
+ </table>
     </div>
   </div>
 </div>

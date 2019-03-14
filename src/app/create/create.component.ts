@@ -4,8 +4,7 @@ import { ProjectService } from '../project.service';
 import { Router } from '@angular/router';
 import { project } from '/home/nineleaps/Desktop/rms/rms/src/app/project.model'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-
+import { AppRoutingModule } from '/home/nineleaps/Desktop/rms/rms/src/app/app-routing.module'
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -42,6 +41,7 @@ saveProduct(values){
     productData.append('EndDate', values.edate);  
     console.log(productData.get("StartDate"));
     this.projectService.createProject(productData).subscribe(result => {
+      alert("Added Succesfully");
       this.routes.navigate(['']);
     });
   }

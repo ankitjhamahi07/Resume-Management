@@ -12,7 +12,7 @@ export class EmpService {
 
 
   constructor(private http: HttpClient) { }  
-  baseUrl: string = 'http://f17ca3ba.ngrok.io/api'; 
+  baseUrl: string = 'http://54b8ba96.ngrok.io/api'; 
 
   getEmployeeById(id: number) {  
     return this.http.get<emp>(this.baseUrl + '/Employees/' + id);  
