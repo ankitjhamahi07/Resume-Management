@@ -23,27 +23,27 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css",
-
-    "node_modules/primeicons/primeicons.css",
-    "node_modules/primeng/resources/themes/nova-light/theme.css",
-    "node_modules/primeng/resources/primeng.min.css",
-  "node_modules/bootstrap/dist/css/bootstrap.css",
-  "node_modules/bootstrap/dist/css/bootstrap-reboot.css",
-  "node_modules/bootstrap/dist/css/bootstrap-grid.css",
-  "node_modules/dropify/dist/css/dropify.css",
-  "node_modules/datatables.net-dt/css/jquery.dataTables.css"
-  
-  
-  ],
-            
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/bootstrap/dist/css/bootstrap-reboot.css",
+              "node_modules/bootstrap/dist/css/bootstrap-grid.css",
+              "node_modules/dropify/dist/css/dropify.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
+            ],
             "scripts": [
-
+              "node_modules/chart.js/dist/Chart.js",
+              
               "node_modules/jquery/dist/jquery.js",
-  "node_modules/bootstrap/dist/js/bootstrap.js",
-  "node_modules/dropify/dist/js/dropify.js",
-  "node_modules/jquery/dist/jquery.js",
-  "node_modules/datatables.net/js/jquery.dataTables.js"
+              
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/dropify/dist/js/dropify.js",
+              
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js"
             ],
             "es5BrowserSupport": true
           },
@@ -99,12 +99,15 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/rms.ico",
+              "src/rms.png"
             ]
           }
         },

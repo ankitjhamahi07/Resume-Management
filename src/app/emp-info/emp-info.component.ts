@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { emp } from '../emp.model';
 import { EmpService } from '../emp.service';
+import { ActivatedRoute, Router, Routes} from '@angular/router';
+import {DashComponent} from '/home/nineleaps/Desktop/rms/rms/src/app/dash/dash.component';
+
 
 
 @Component({
@@ -10,19 +13,26 @@ import { EmpService } from '../emp.service';
   templateUrl: './emp-info.component.html',
   styleUrls: ['./emp-info.component.css']
 })
-export class EmpInfoComponent implements OnInit {
+export class EmpInfoComponent implements OnDestroy, OnInit {
 
   employee: emp;
   isLoadingResults: boolean;
+  viewId:number;
+  private sub:any;
+  e:emp;
   
 
-  constructor( private details: EmpService) { }
+  constructor( private details: EmpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
+    this.sub = this.route.params.subscribe(params => {
+      this.viewId = +params['id']; 
      
-    this.getEmployeeDetails(1);
-  }
+    
+  });
+  this.getEmployeeDetails(this.viewId);
+  
+}
 
   downloadPDF()
   {
@@ -44,15 +54,23 @@ pdf.save(this.employee.EmployeeName+'_Resume.pdf'); // Generated PDF
 
 
   getEmployeeDetails(id:number) {
-    this.details.getEmployeeById(1)
+    this.details.getEmployeeById(id)
       .subscribe(data => {
-        this.employee = data;
+        this.e=data;
+        this.employee = this.e;
         
-        console.log(this.employee.EmployeeName);
-        console.log(this.employee.EmployeeEmail);
-        console.log(this.employee.EmployeePhone);
+        
+        console.log(this.employee[0]);
+        //console.log(data.EmployeeDesignation);
         this.isLoadingResults = false;
       });
+  }
+
+  ngOnDestroy()
+  {
+
+    this.sub.unsubscribe();
+
   }
 
 }

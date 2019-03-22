@@ -5,6 +5,16 @@
 export const environment = {
   production:false,
   
+  firebase: {  
+    apiKey: "AIzaSyBMUIkHMKsY0riSrF7xSKXOeIw8mSLWuSg",
+    authDomain: "resumemanagement-ff150.firebaseapp.com",
+    databaseURL: "https://resumemanagement-ff150.firebaseio.com",
+    projectId: "resumemanagement-ff150",
+    storageBucket: "resumemanagement-ff150.appspot.com",
+    messagingSenderId: "916789453871"
+  
+  }
+  
 };
 
 /*

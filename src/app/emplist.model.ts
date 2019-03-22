@@ -1,9 +1,9 @@
 export class Emplist {
 
 
-    ProjectId:number;
-    ProjectTitle:string;
-    ProjectDescription:string;
-    StartDate:Date;
-    EndDate:Date;
+    EmployeeId: number;
+    EmployeeName: string;
+    ProjectTitle: string;
+    Role:	string;
+    EmployeeTech:	string;
 }

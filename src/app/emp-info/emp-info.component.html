@@ -1,3 +1,4 @@
+
 <div *ngIf="employee">
 <div id="resume">
 <article class="l-Wrapper">
@@ -7,16 +8,16 @@
       <a href="http://www.Ankitstrieder.com" target="_blank">
         <h1 class="Title">
           <span class="u-shadow">
-            {{employee.EmployeeName}}
+            {{employee[0].EmployeeName}}
           </span>
-          <span class="Title-sub"> {{employee.EmployeeDesignation}}</span>
+          <span class="Title-sub"> {{employee[0].EmployeeDesignation}}</span>
         </h1>
       </a>
     </div>
     <div class="l-Header-col Contact">
       <div>Seattle, WA</div>
       <div><a class="u-link" href="http://Ankitstrieder.com/" target="_blank">www.nineleaps.com</a></div>
-      <div><a class="u-link" href="mailto:Ankit.strieder@gmail.com" target="_blank">{{employee.EmployeeEmail}}</a></div>
+      <div><a class="u-link" href="mailto:Ankit.strieder@gmail.com" target="_blank">{{employee[0].EmployeeEmail}}</a></div>
     </div>
   </div>
 
@@ -25,7 +26,7 @@
   <section class="l-Section">
     <h2 class="l-Section-title h3 u-hidden@sm-down">Profile</h2>
     <div class="l-Section-content">
-      <p>I specialize in component based HTML/CSS architecture, with a focus on maintainability and scalability, a mobile first approach.</p>
+      <p>I specialize in component based {{employee[0].EmployeeSkill}} architecture, with a focus on maintainability and scalability, an agile approach.</p>
     </div>
   </section>
 </a>
@@ -35,7 +36,7 @@
     <h2 class="l-Section-title h3">Skills</h2>
     <div class="l-Section-content">
       <ul>
-        <li>Highly skilled in creating performant <strong class="Tag">HTML</strong>, <strong class="Tag">{{employee.EmployeeSkill}}</strong></li>
+        <li>Highly skilled in creating performant <strong class="Tag">HTML</strong>, <strong class="Tag">{{employee[0].EmployeeSkill}}</strong></li>
         <li>Passionate about <strong class="Tag">CSS Methodologies</strong> and <strong class="Tag">CSS Preprocessors</strong></li>
         <li>Skilled in creating <strong class="Tag">Component Libraries</strong>, <strong class="Tag">Prototypes</strong> and <strong class="Tag">Style Guides</strong></li>
         <li>Experienced with <strong class="Tag">Templating Languages</strong> and <strong class="Tag">JavaScript</strong></li>
@@ -49,11 +50,11 @@
   <section class="l-Section">
     <h2 class="l-Section-title h3">Experience</h2>
     <div class="l-Section-content">
-      <h3>Freelance Front-end Developer</h3>
-      <a class="u-link" href="http://www.Ankitstrieder.com/" target="_blank">Self-employed, Seattle</a> (WA)<br> May 2017 - present
+      <h3>{{employee[0].EmployeeDesignation}}</h3>
+      <a class="u-link" href="http://www.nineleaps.com/" target="_blank">{{employee[0].EmployeeAddress}}</a> (WA)<br> May 2017 - present
 
-      <h3>Front-end Developer</h3>
-      <a class="u-link" href="https://www.snaptechnology.co.uk/" target="_blank">Snap Fashion, London</a> (UK)<br> May 2014 - Jul 2016
+      <h3>Front-end Developer</h3>  
+      <a class="u-link" href="https://www.nineleaps.com/" target="_blank">Snap Fashion, London</a> (UK)<br> {{employee[0].StartDate}}-{{employee[0].EndDate}}
       <ul>
         <li>Re-architected CSS/HTML codebase of the responsive Snap Fashion website for better maintainability and performance.</li>
         <li>Introduced Grunt, Bower and npm to automate common tasks, optimize frontend assets and manage third party packages.</li>
@@ -121,3 +122,5 @@
   </div>
 </div>
 </div>
+</div>
+

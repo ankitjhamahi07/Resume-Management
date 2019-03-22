@@ -15,7 +15,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Start Date</th>
-        <th>End Date</th>
+        <th>End Date</th> 
         <th>Actions</th>
         </tr>
         </thead>
@@ -27,22 +27,15 @@
           <td>{{p.StartDate}}</td>
           <td>{{p.EndDate}}</td>
           <td>
-            <button type="button" class="btn btn-success" (click)="getNavigation('view', p.ProjectId)"><i class="fa fa-eye" style="font: size 3px"></i></button>
-            <button type="button" class="btn btn-warning" (click)="getNavigation('update', p.ProjectId)"><i class="fa fa-edit"></i></button>
-            <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn btn-success" (click)="view(p.ProjectId)"><i class="fa fa-eye" style="font: size 3px"></i></button>
+            <button type="button" class="btn btn-warning" (click)="Edit(p.ProjectId,i)"><i class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-danger" (click) = "archiveProject(p.ProjectId)"><i class="fa fa-trash"></i></button>
           </td>
         </tr>
       </tbody>
-        <tfoot>
-            <tr>
-              <th><input type="text" placeholder="Search ID" name="search-id"/></th>
-              <th><input type="text" placeholder="Search Name" name="search-first-name"/></th>
-              <th><input type="text" placeholder="Search Description" name="search-description"/></th>
-              <th><input type="text" placeholder="Search StartDate" name="search-startdate"/></th>
-              <th><input type="text" placeholder="Search EndDate" name="search-enddate"/></th>
-             </tr>
-          </tfoot>
- </table>
+    </table>
     </div>
   </div>
 </div>
+
+<!-- <button (click)="login()"> LOGIN </button> -->

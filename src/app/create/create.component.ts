@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { project } from '/home/nineleaps/Desktop/rms/rms/src/app/project.model'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AppRoutingModule } from '/home/nineleaps/Desktop/rms/rms/src/app/app-routing.module'
+import {ToastrService} from 'ngx-toastr';
+import {DatePipe} from '@angular/common';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -13,9 +15,11 @@ import { AppRoutingModule } from '/home/nineleaps/Desktop/rms/rms/src/app/app-ro
 export class CreateComponent implements OnInit {
 
   productForm:FormGroup;
+  stdate:Date;
+  
 
   constructor(private fb: FormBuilder, private projectService:ProjectService,
-    private routes:Router) {
+    private routes:Router, private toast:ToastrService  ) {
 
       this.productForm = this.fb.group({
         name: ['', Validators.required],
@@ -26,23 +30,41 @@ export class CreateComponent implements OnInit {
      }
 
 
+     showError()
+     {
+       this.toast.error("Sorry an error occured");
+     }
+
+     showSuccess()
+     {
+       this.toast.success("Yay! All the best for your new project!");
+     }
     
 
   ngOnInit() {
+    this.stdate=new Date();
+    console.log(this.stdate);
+
+    //this.stdate=this.stdate.toISOString.substring(0,10);
+    //console.log(this.stdate);
   }
+
 saveProduct(values){ 
 
   
+    values.sdate = this.stdate;
   
     const productData = new FormData();
     productData.append('ProjectTitle', values.name);
     productData.append('ProjectDescription', values.desc);
     productData.append('StartDate', values.sdate);
-    productData.append('EndDate', values.edate);  
-    console.log(productData.get("StartDate"));
+    productData.append('EndDate', values.edate);
+    console.log(values.sdate);  
+    //console.log(productData.get('StartDate',));
     this.projectService.createProject(productData).subscribe(result => {
+      this.showSuccess();
       alert("Added Succesfully");
-      this.routes.navigate(['']);
+      this.routes.navigate(['/view']);
     });
   }
 

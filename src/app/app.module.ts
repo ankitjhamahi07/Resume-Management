@@ -26,6 +26,38 @@ import {DropdownModule} from 'primeng/primeng';
 import {MultiSelectModule} from 'primeng/multiselect'
 import { SelectItem } from 'primeng/primeng';
 import { ToastrModule } from 'ngx-toastr';
+import { PiechartComponent } from './piechart/piechart.component';
+import {ChartModule} from 'primeng/chart';
+import { DashComponent } from './dash/dash.component';
+import { MyNavComponent } from './my-nav/my-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatDialogModule } from '@angular/material';
+import { ContactComponent } from './contact/contact.component';
+import {TooltipModule} from 'primeng/tooltip';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {DragDropModule} from 'primeng/dragdrop';
+import {PickListModule} from 'primeng/picklist';
+import { ArchivedComponent } from './archived/archived.component';
+import { NotFoundComponentComponent } from './not-found-component/not-found-component.component';
+import {AngularFireModule} from '@angular/fire';
+//import {AngularFireDatabaseModule} from 'angularfire2/database';
+//import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from "src/app/auth.service";
+import { AngularFireAuth } from '@angular/fire/auth';
+import { PrjDetailsComponent } from './prj-details/prj-details.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
+//import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
+
+export const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  storageBucket: "",
+  messagingSenderId: ""
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,15 +68,29 @@ import { ToastrModule } from 'ngx-toastr';
     CreateComponent,
     UpdateComponent,
     ReadComponent,
+    DashComponent,
     ListempComponent,
+    PiechartComponent,
+    MyNavComponent,
+    ContactComponent,
+    ArchivedComponent,
+    NotFoundComponentComponent,
+    LoginComponent,
+    PrjDetailsComponent,
+    EditProjectComponent,
+    
     
   ],
   imports: [
-   // AngularFireModule.initializeapp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase),
+    //AngularFireAuth,
+    AngularFireAuthModule,
+   // AngularFirestoreModule,
+    //AngularFirestore,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule,    
     HttpClientModule,
     DataTablesModule,
     TableModule,
@@ -56,18 +102,33 @@ import { ToastrModule } from 'ngx-toastr';
     SliderModule,
     ToastModule,
     ToastrModule.forRoot(),
+    ChartModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    TooltipModule,
+    ProgressSpinnerModule,
+    PickListModule,
     
+   // AngularFireDatabaseModule,
+    //AngularFireModule.initializeApp(firebaseConfig),
     
-    
-    //AngularFireAuthModule,
-    //AngularFirestoreModule,
 
     
+  ],
+  entryComponents:[
+    PrjDetailsComponent,
+    EditProjectComponent
+
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
 ],
-  providers: [EmpService,EmpInfoComponent,ProjectService,EmplistService,MessageService],
+  providers: [EmpService,EmpInfoComponent,ProjectService,EmplistService,MessageService,AuthService,AngularFireAuth, AngularFireAuthModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,10 +10,20 @@ export class EmplistService {
 
   constructor(private http: HttpClient) { }
 
-  readonly baseUrl: string = "http://e00b0fc1.ngrok.io/api"
+  readonly baseUrl: string = 'http://5f9d1284.ngrok.io/api'; 
   getProjectList()
   {
     return this.http.get<Emplist[]>(this.baseUrl+'/Projects')
                     
+  }
+
+  getEmployee()
+  {
+    return this.http.get<any>(this.baseUrl+'/Employees')
+  }
+  
+  getEmployeeList()
+  {
+    return this.http.get<any>(this.baseUrl+'/EmployeeList')
   }
 }

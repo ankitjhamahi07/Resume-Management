@@ -25,25 +25,26 @@
         <div class="screen-body-item">
           <div class="app-form">
             <div class="app-form-group">
-              <input class="app-form-control" placeholder="NAME" [(ngModel)]="name" required>
+              <input class="app-form-control" placeholder="{{empName}}" [(ngModel)]="empName" disabled>
             </div>
             <div class="app-form-group">
               <input class="app-form-control" placeholder="ankitjhamahi.07@gmail.com" [(ngModel)]="email"  value ="ankitjhamahi.07@gmail.com" disabled> 
             </div>
-            <div class="app-form-group">
-              <input type="phone" class="app-form-control" placeholder="EMPLOYEE ID" [(ngModel)]="mobile" required>
-            </div>
+            
 
             <div class="app-form-group message">
               <input type ="text" class="app-form-control" placeholder="Subject" [(ngModel)]="subject" required>
             </div>
+            <div class="app-form-group message">
+                <input type ="text" class="app-form-control" placeholder="NL{{empId}}" [(ngModel)]="empID" disabled>
+              </div>
 
             <div class="app-form-group message">
               <input class="app-form-control" placeholder="MESSAGE" [(ngModel)]="message" required>
             </div>
             <div class="app-form-group buttons">
               <button class="app-form-button">CANCEL</button>
-              <button class="app-form-button" (click)="save(name, email, mobile, subject, message)"> SEND </button>
+              <button class="app-form-button" (click)="save(empName, email, empId, subject, message)"> SEND </button>
             </div>
           </div>
         </div>

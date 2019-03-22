@@ -12,11 +12,21 @@ export class EmpService {
 
 
   constructor(private http: HttpClient) { }  
-  baseUrl: string = 'http://54b8ba96.ngrok.io/api'; 
+  baseUrl: string = 'http://5f9d1284.ngrok.io/api'; 
 
   getEmployeeById(id: number) {  
-    return this.http.get<emp>(this.baseUrl + '/Employees/' + id);  
+    return this.http.get<any>(this.baseUrl + '/Employees/' + id);  
   }  
+
+  getEmployee()
+  {
+    return this.http.get<any>(this.baseUrl+'/Employees')
+  }
+
+  getEmployeeList()
+  {
+    return this.http.get<any>(this.baseUrl+'/EmployeeList')
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

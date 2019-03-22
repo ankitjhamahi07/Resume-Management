@@ -6,6 +6,8 @@ import { SelectItem } from 'primeng/primeng';
 import {MessageService} from 'primeng/api';
 import { MultiSelectModule } from 'primeng/multiselect';
 import {ToastrService} from 'ngx-toastr';
+import { emp } from '../emp.model';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-listemp',
@@ -15,13 +17,19 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ListempComponent implements OnInit {
 
-  emp: Emplist[];
-  constructor(private emplist: EmplistService, private toastr:ToastrService) { }
+  employee: Emplist;
+  loading: boolean;
+
+  selectedCars: Emplist[];
+
+  constructor(private emplist: EmplistService, private toastr:ToastrService, private router:Router) { }
   cols: any;
 
   tech: SelectItem[];
 
-  name: SelectItem[];
+  role: SelectItem[];
+  
+  name: any;
 
   yearFilter: number;
 
@@ -37,33 +45,37 @@ export class ListempComponent implements OnInit {
 
     this.tech = [
       { label: 'All Description', value: null },
-      { label: 'Test', value: 'To create a map' },
-      { label: '5', value: 'Kuch bhi' }
+      { label: 'Angular', value: 'Angular' },
+      { label: '.net', value: '.net' },
+      { label: 'Python', value: 'Python' }
   ];
 
-  this.name = [
-    { label: 'All Name', value: null },
-    { label: 'Test', value: 'Test' },
-    { label: 'Ford', value: 'Ford' }
+  this.role= [
+    { label: 'All Roles', value: null },
+    { label: 'Backend', value: 'Back End' },
+    { label: 'Frontend', value: 'Front End' },
+    { label: 'Scrum Master', value: 'Scrum Master' }
 ];
    
   this.cols = [
-      { field: 'ProjectId', header: 'ID' },
-      { field: 'ProjectTitle', header: 'Title' },
-      { field: 'ProjectDescription', header: 'Description' },
-      { field: 'StartDate', header: 'Start Date' },
-      { field: 'EndDate', header: 'End Date' }
+      { field: 'EmployeeId', header: 'ID' },
+      { field: 'EmployeeName', header: 'Name' },
+      { field: 'ProjectTitle', header: 'Project Title' },
+      { field: 'Role', header: 'Role' },
+      { field: 'EmployeeTech', header: 'Skill' }
   ];
+  this.loading=true;
   }
 
   getAllProjects()
   {
     console.log("hey");
-    this.emplist.getProjectList().subscribe(
+    this.emplist.getEmployeeList().subscribe(
       data => {
-        this.emp=data;
+        this.employee=data;
         console.log(data);
         this.showSuccess();
+        this.loading=false;
         
       }
     )
@@ -77,6 +89,16 @@ export class ListempComponent implements OnInit {
     this.yearTimeout = setTimeout(() => {
         dt.filter(event.value, 'year', 'gt');
     }, 250);
+}
+
+goToEmployeeDetails(id) {
+  console.log(id);
+  this.router.navigate(['/empInfo', id]);
+}
+
+goToEmployeeContact(id) {
+  console.log(id);
+  this.router.navigate(['/contact', id]);
 }
 
 
