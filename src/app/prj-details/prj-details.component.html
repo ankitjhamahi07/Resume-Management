@@ -45,7 +45,7 @@
           -->
   
           <td>
-            <button type="button" class="btn btn-default btn-primary" (click)="DeleteFromProject(e.EmployeeId)">
+            <button type="button" class="btn btn-default btn-primary" (click)="DeleteFromProject(e.ProjectId, e.EmployeeId)">
               <span class="glyphicon glyphicon-user">Delete</span>
             </button> &nbsp;
             <button type="button" class="btn btn-default btn-primary" (click)="FreeFromProject()">
@@ -79,7 +79,7 @@
       <div class="card card-body">
   
         
-        <form #form="ngForm" (submit)="AddMemberToProject(form)">
+        <form #form="ngForm" (submit)="AddMemberToProject(form)" name="form">
          
             <div class="col">
               <input type="hidden"  #ProjectId="ngModel" name="ProjectId" [(ngModel)]="data">
@@ -90,49 +90,47 @@
             <br>
   
             <div class="col">
-              <input type="hidden"  #EmployeeEmail="ngModel" name="EmployeeEmail" [(ngModel)]="data">
+              <!-- <input type="hidden"  name="EmployeeEmail" [(ngModel)]="data" #EmployeeEmail="ngModel"> -->
               <label>Employee Email</label>
               <input type="text" class="form-control" placeholder="Employee Email" name="EmployeeEmail"
-                #EmployeeEmail="ngModel" [(ngModel)]="aa9">
+              #EmployeeEmail="ngModel" [(ngModel)]="model.EmployeeEmail">
+
+                
             </div>
+
             <br>
   
             <div class="form-group col-md-4">
               <label for="inputState">Tech</label>
-              <select id="inputState" class="form-control" name="Employee Tech" #EmployeeTech="ngModel" [(ngModel)]="aa1">
-                <option selected>Choose</option>
-                <option>Angular</option>
-                <option>.Net</option>
-                <option>Java</option>
-                <option>Python</option>
-                <option>IoT</option>
-                <option>C</option>
-                <option>Android</option>
+              <select id="inputState" class="form-control" name="EmployeeTech" [(ngModel)]="SelectedTech" required>
+                <option *ngFor="let technology of tech" [ngValue]="technology" > {{technology}} </option>
+              
+                <label>Type:</label>
               </select>
             </div>
             <br>
             <div class="col">
-              <label> Role</label>
-              <input type="text" class="form-control" placeholder="Role" name="Role" #Role="ngModel" [(ngModel)]="aa2">
+              <label> Role </label>
+              <input type="text" class="form-control" placeholder="Role" name="Role" #Role="ngModel" [(ngModel)]="aa2" required>
             </div>
             <br>
             <div class="col">
-              <label> EmployeeStartDate</label>
-              <input type="text" class="form-control" placeholder="Employee StartDate" name="Employee StartDate"
-                #EmployeeStartDate="ngModel" [(ngModel)]="aa6">
+              <label> Employee Start Date</label>
+              <input type="date" class="form-control" placeholder="Employee Start Date" name="EmployeeStartDate"
+                #EmployeeStartDate="ngModel" [(ngModel)]="start">
             </div>
             <br>
             <div class="col">
-              <label> EmployeeEndDate</label>
-              <input type="text" class="form-control" placeholder="Employee EndDate" name="Employee EndDate"
-                #EmployeeEndDate="ngModel" [(ngModel)]="aa5">
+              <label> Employee End Date</label>
+              <input type="date" class="form-control" placeholder="Employee End Date" name="EmployeeEndDate"
+                #EmployeeEndDate="ngModel" [(ngModel)]="end">
             </div>
   
-          
-          <button style="margin-left: 37%" mat-raised-button color="primary" type="Submit">Submit!</button>&nbsp;
+          <div class =  "form-group">
+          <button style="margin-left: 37%" mat-raised-button color="primary" type="Submit"> Submit!</button>&nbsp;
           <!-- <button mat-raised-button color="primary" data-toggle="collapse" data-target="#collapseExample"
             aria-expanded="false" aria-controls="collapseExample">Done!!</button> -->
-  
+          </div>
         </form>
   
   

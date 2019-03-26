@@ -21,6 +21,7 @@ import {ToastModule} from 'primeng/toast';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DataTableModule, SliderModule, MessageService} from 'primeng/primeng';
 import { EmplistService } from './emplist.service';
+//import {EmpService} from '/home/nineleaps/Desktop/rms/rms/src/app/emp.service'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {DropdownModule} from 'primeng/primeng';
 import {MultiSelectModule} from 'primeng/multiselect'
@@ -43,11 +44,12 @@ import {AngularFireModule} from '@angular/fire';
 //import {AngularFireDatabaseModule} from 'angularfire2/database';
 //import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
-import { LoginComponent } from './login/login.component';
+//import { LoginComponent } from './login/login.component';
 import { AuthService } from "src/app/auth.service";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { PrjDetailsComponent } from './prj-details/prj-details.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
+//import {FormsModule} from '@angular/forms';
 //import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 
 export const firebaseConfig = {
@@ -75,22 +77,25 @@ export const firebaseConfig = {
     ContactComponent,
     ArchivedComponent,
     NotFoundComponentComponent,
-    LoginComponent,
+    //LoginComponent,
     PrjDetailsComponent,
     EditProjectComponent,
+    
     
     
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     //AngularFireAuth,
+    FormsModule,
     AngularFireAuthModule,
    // AngularFirestoreModule,
     //AngularFirestore,
     BrowserModule,
+    //FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,    
+        
     HttpClientModule,
     DataTablesModule,
     TableModule,
@@ -123,6 +128,7 @@ export const firebaseConfig = {
   entryComponents:[
     PrjDetailsComponent,
     EditProjectComponent
+
 
   ],
   schemas: [

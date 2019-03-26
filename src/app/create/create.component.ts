@@ -42,8 +42,6 @@ export class CreateComponent implements OnInit {
     
 
   ngOnInit() {
-    this.stdate=new Date();
-    console.log(this.stdate);
 
     //this.stdate=this.stdate.toISOString.substring(0,10);
     //console.log(this.stdate);
@@ -52,20 +50,27 @@ export class CreateComponent implements OnInit {
 saveProduct(values){ 
 
   
-    values.sdate = this.stdate;
+    //values.sdate = this.stdate;
   
     const productData = new FormData();
     productData.append('ProjectTitle', values.name);
     productData.append('ProjectDescription', values.desc);
     productData.append('StartDate', values.sdate);
     productData.append('EndDate', values.edate);
-    console.log(values.sdate);  
+    //console.log(values.sdate);  
     //console.log(productData.get('StartDate',));
     this.projectService.createProject(productData).subscribe(result => {
       this.showSuccess();
+      console.log("Added");
       alert("Added Succesfully");
       this.routes.navigate(['/view']);
-    });
+    },
+    (err) =>{this.showError();
+    this.productForm.reset();
+  }
+    
+    
+    );
   }
 
 }

@@ -14,15 +14,15 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { ArchivedComponent } from './archived/archived.component';
 import { NotFoundComponentComponent } from './not-found-component/not-found-component.component';
-import { LoginComponent } from './login/login.component';
+
 
 
 export const appRoutes: Routes = [
   
  
   {
-    path:'',
-    component:LoginComponent
+    path:'',  
+    component: ViewComponent
   },
   
   
@@ -34,10 +34,7 @@ export const appRoutes: Routes = [
     path: 'empInfo/:id',
        component: EmpInfoComponent
   },
-  {
-    path: 'signin',
-    component:LoginComponent
-  },
+  
   {path: 'piechart', 
   component: PiechartComponent},
 

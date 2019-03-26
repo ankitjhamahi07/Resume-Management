@@ -1,9 +1,0 @@
-<div class="card" *ngIf="user">
-    <h3>Welcome</h3>
-    <img src="{{user?.photoURL}}" alt="John" style="width:100%">
-    <h1>{{user?.displayName}}</h1>
-  </div>
-
-
-<button *ngIf="!user" type='button' 
-(click)="loginGoogle()">Login</button>

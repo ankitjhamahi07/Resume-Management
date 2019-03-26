@@ -3,7 +3,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="!(isHandset$ | async)">
-    <mat-toolbar color ="blue"> RMS </mat-toolbar>
+    <mat-toolbar color ="blue"> <i class =" fa fa-book"> RMS </i> </mat-toolbar>
     <mat-nav-list>
         <h3 matSubheader> Employee Info </h3>
       <a mat-list-item routerLink="/empInfo" routerLinkActive="active"> <i class =" fa fa-eye"> View Resume </i> </a>
@@ -13,7 +13,7 @@
         <h3 matSubheader> Project Manager </h3>
        <a mat-list-item href="/piechart" routerLinkActive="active"> <i class = "fa fa-pie-chart"> Dashboard</i></a>
       <a mat-list-item href="/view" routerLinkActive="active"> <i class ="fa fa-folder-open-o"> View Projects </i></a>
-      <a mat-list-item href="/view" routerLinkActive="active"> <i class ="	fa fa-history"> Archived Projects </i></a>
+      <a mat-list-item href="/archived" routerLinkActive="active"> <i class ="	fa fa-history"> Archived Projects </i></a>
     </mat-nav-list>
     <mat-nav-list>
         <h3 matSubheader> Staffing Manager </h3>

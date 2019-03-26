@@ -14,6 +14,7 @@ import {EditProjectComponent} from '../edit-project/edit-project.component'
 
 import { Injectable } from '@angular/core'
 import { projects } from '../projects.model';
+import { flatMap } from 'rxjs/operators';
 declare var $;
 
 @Component({
@@ -37,6 +38,7 @@ export class ViewComponent implements OnDestroy, AfterViewInit {
   datatableElement: DataTableDirective;
   dtTrigger: Subject<DataTableDirective> = new Subject();
   dtInstance: DataTables.Api;
+  loading:boolean=false;
 
   constructor(private http: HttpClient, private projectService: ProjectService,
     private toast: ToastrService, private routes: Router,
@@ -96,8 +98,17 @@ export class ViewComponent implements OnDestroy, AfterViewInit {
         this.dtTrigger.unsubscribe();
 
 
+      },
+      err=>
+    {
+      if(err.status==502)
+      {
+        this.toast.error("Error 502. Check your API ");
       }
+    }
+      
     )
+    
   }
 
   view(projectId: any) {
@@ -143,6 +154,7 @@ export class ViewComponent implements OnDestroy, AfterViewInit {
         //  // this.dataTable.DataTable.rows( {search:'removed'} ).nodes();
         this.toast.error("You successfully archived your project");
         this.dtTrigger.unsubscribe();
+        this.dtTrigger.next();
         this.loadProjects();
 
 
@@ -162,7 +174,7 @@ export class ViewComponent implements OnDestroy, AfterViewInit {
     dialogConfig2.width = "90%";
     //console.log(this.projectList[0]);
     dialogConfig2.data = this.projectList[index];
-    console.log("hellouni")
+    //console.log("hellouni")
     console.log(dialogConfig2.data);
     
     this.dialog.open(EditProjectComponent, dialogConfig2).afterClosed().subscribe(res=>{

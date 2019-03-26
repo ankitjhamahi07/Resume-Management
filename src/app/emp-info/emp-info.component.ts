@@ -5,6 +5,7 @@ import { emp } from '../emp.model';
 import { EmpService } from '../emp.service';
 import { ActivatedRoute, Router, Routes} from '@angular/router';
 import {DashComponent} from '/home/nineleaps/Desktop/rms/rms/src/app/dash/dash.component';
+import { project } from '../project.model';
 
 
 
@@ -18,6 +19,7 @@ export class EmpInfoComponent implements OnDestroy, OnInit {
   employee: emp;
   isLoadingResults: boolean;
   viewId:number;
+  empProjects:project;
   private sub:any;
   e:emp;
   
@@ -31,12 +33,13 @@ export class EmpInfoComponent implements OnDestroy, OnInit {
     
   });
   this.getEmployeeDetails(this.viewId);
+  this.getEmployeeProjectDetails(this.viewId);
   
 }
 
   downloadPDF()
   {
-    var data = document.getElementById('resume');
+  var data = document.getElementById('resume');
 html2canvas(data).then(canvas => {
 // Few necessary setting options
 var imgWidth = 370;
@@ -54,6 +57,7 @@ pdf.save(this.employee.EmployeeName+'_Resume.pdf'); // Generated PDF
 
 
   getEmployeeDetails(id:number) {
+  
     this.details.getEmployeeById(id)
       .subscribe(data => {
         this.e=data;
@@ -64,6 +68,23 @@ pdf.save(this.employee.EmployeeName+'_Resume.pdf'); // Generated PDF
         //console.log(data.EmployeeDesignation);
         this.isLoadingResults = false;
       });
+  }
+
+  getEmployeeProjectDetails(id:number)
+  {
+
+
+    this.details.getEmployeeProjectDetails(id)
+      .subscribe(data => {
+        this.empProjects=data;
+        //this.employee = this.e;
+        
+        
+        console.log(this.empProjects);
+        //console.log(data.EmployeeDesignation);
+        this.isLoadingResults = false;
+      });
+
   }
 
   ngOnDestroy()
