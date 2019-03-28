@@ -42,12 +42,19 @@ export class ListempComponent implements OnInit {
   ngOnInit() {
     this.getAllProjects();
 
-
+   // 'Angular', 'Dot Net', 'Python', 'Java', 'C', 'C#', 'Big Data'
+   // This is used for filter
     this.tech = [
       { label: 'All Description', value: null },
       { label: 'Angular', value: 'Angular' },
-      { label: '.net', value: '.net' },
-      { label: 'Python', value: 'Python' }
+      { label: '.net', value: 'Dot Net' },
+      { label: 'Python', value: ' Python' },
+      { label: 'Java', value: ' Java' },
+      { label: 'C#', value: ' C#'},
+      { label: 'C', value: ' C'},
+      { label: 'Big Data', value: 'Big Data'},
+      
+      
   ];
 
   this.role= [
@@ -77,6 +84,13 @@ export class ListempComponent implements OnInit {
         this.showSuccess();
         this.loading=false;
         
+      }
+      , err =>
+      {
+        if(err.status==404)
+        {
+          this.router.navigateByUrl('/404', {replaceUrl: true});
+        }
       }
     )
   }

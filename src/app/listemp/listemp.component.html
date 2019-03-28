@@ -1,5 +1,4 @@
-<p-table #dt [columns]="cols" [paginator]="true" [rows]="5" stateStorage="local" 
-stateKey="statedemo-local" rowHover="true" [value]="employee" 
+<p-table #dt [columns]="cols" [paginator]="true" [rows]="3" rowHover="true" [value]="employee" 
 sortMode="multiple" [multiSortMeta]="multiSortMeta" selectionMode="" 
 [(selection)]="selectedCars" class="table-table dark" >
 
@@ -24,7 +23,7 @@ sortMode="multiple" [multiSortMeta]="multiSortMeta" selectionMode=""
   <ng-template pTemplate="header" let-columns>
         <tr>
                 <th style="width: 2.75em">
-                    All
+                    Check
 
                     </th>
             <th *ngFor="let col of columns" [pSortableColumn]="col.field">
@@ -53,8 +52,9 @@ sortMode="multiple" [multiSortMeta]="multiSortMeta" selectionMode=""
                 <input pInputText *ngSwitchCase="'ProjectTitle'" type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)" [value]="dt.filters[col.field]?.value" pTooltip="Search by Project">
                 <input pInputText *ngSwitchCase="'EmployeeName'" type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)" [value]="dt.filters[col.field]?.value" pTooltip="Search by Name">
                 <p-dropdown *ngSwitchCase="'EmployeeTech'" [options]="tech" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
-                <p-dropdown *ngSwitchCase="'Role'" [options]="role" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                <!-- <p-dropdown *ngSwitchCase="'Role'" [options]="role" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown> -->
                 <!-- <p-multiSelect *ngSwitchCase="'ProjectTitle'" [options]="name" defaultLabel="All Colors" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect> -->
+                <input pInputText *ngSwitchCase="'Role'" type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)" [value]="dt.filters[col.field]?.value" pTooltip="Search by Role">
             </th>
             </tr>
 

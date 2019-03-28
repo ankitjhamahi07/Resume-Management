@@ -86,6 +86,89 @@
 
 
       <a name="profile">
+  <section class="l-Section">
+    <h2 class="l-Section-title h3 u-hidden@sm-down">Profile</h2>
+    <div class="l-Section-content">
+      <p>I specialize in component based *** architecture, with a focus on maintainability and scalability, an agile approach.</p>
+    </div>
+  </section>
+</a>
+
+<a name ="skills">
+  <section class="l-Section">
+    <h2 class="l-Section-title h3">Skills</h2>
+    <div class="l-Section-content">
+      <ul>
+        <li>Highly skilled in creating performant <strong class="Tag">HTML</strong>, <strong class="Tag"></strong></li>
+        <li>Passionate about <strong class="Tag">CSS Methodologies</strong> and <strong class="Tag">CSS Preprocessors</strong></li>
+        <li>Skilled in creating <strong class="Tag">Component Libraries</strong>, <strong class="Tag">Prototypes</strong> and <strong class="Tag">Style Guides</strong></li>
+        <li>Experienced with <strong class="Tag">Templating Languages</strong> and <strong class="Tag">JavaScript</strong></li>
+        <li>Proficient with <strong class="Tag">Task Runners</strong> and <strong class="Tag">Package Managers</strong> and <strong class="Tag">Version Control Systems</strong></li>
+        <li>Knowledgeable about <strong class="Tag">User Experience</strong>, <strong class="Tag">Accessibility</strong>, <strong class="Tag">Performance</strong>, <strong class="Tag">Responsive Web Development</strong> with a <strong class="Tag">Mobile First</strong>          approach, <strong class="Tag">Cross-Browser Compatibilities</strong> and <strong class="Tag">Progressive Enhancement</strong>.</li>
+      </ul>
+    </div>
+  </section> 
+</a>
+
+<div *ngFor="let project  of empProjects; let i=index">
+  <section class="l-Section" *ngIf="project.ProjectStatus">
+    <h2 class="l-Section-title h3" > Past </h2>
+    
+    <div class="l-Section-content">
+      <h3>{{project.ProjectTitle}}</h3>
+      <a class="u-link" href="http://www.nineleaps.com/" target="_blank">{{employee.EmployeeAddress}}</a> (WA)<br> May 2017 - present
+
+      <h3>{{project.ProjectTitle}}</h3>  
+      <a class="u-link" href="https://www.nineleaps.com/" target="_blank">Nineleaps</a> India<br> 
+      <a class="u-link" href="http://www.nineleaps.com/" target="_blank">{{employee.EmployeeAddress}}</a> (WA)<br> {{project.EmployeeStartDate}} to {{project.EmployeeEndDate}}
+
+      <ul>
+        <li>{{project.ProjectDescription}}</li>
+        
+        
+      </ul>
+      
+      <br>
+    </div>
+    
+    
+  </section>
+  </div>
+
+  <div *ngFor="let project  of empProjects; let i=index">
+    <section class="l-Section" *ngIf="!project.ProjectStatus">
+      <h2 class="l-Section-title h3" > Present </h2>
+      
+      <div class="l-Section-content">
+        <h3>{{project.Role}}</h3>
+        <a class="u-link" href="http://www.nineleaps.com/" target="_blank">{{employee.EmployeeAddress}}</a> (WA)<br> May 2017 - present
+  
+        <h3>{{project.ProjectTitle}}</h3>  
+        <a class="u-link" href="https://www.nineleaps.com/" target="_blank">Nineleaps</a> India<br> 
+        <a class="u-link" href="http://www.nineleaps.com/" target="_blank">{{employee.EmployeeAddress}}</a> (WA)<br> {{project.EmployeeStartDate}} to {{project.EmployeeEndDate}}
+  
+        <ul>
+          <li>{{project.ProjectDescription}}</li>
+          
+          
+        </ul>
+        
+        <br>
+      </div>
+      
+      
+    </section>
+    </div>
+  
+
+  <section class="l-Section">
+    <h2 class="l-Section-title h3">Education</h2>
+    <div class="l-Section-content">
+      <h3>BSc, Media-technology and -design</h3>
+      <a class="u-link" href="https://www.fh-ooe.at/en/hagenberg-campus/" target="_blank">University of Applied Sciences Campus Hagenberg</a> (AUT)<br> 2006 - 2009
+      <p>A full-time degree programme that provides the technical expertise as well as the design and communication skills in areas including web (backend and frontend development), multimedia, 3D modelling, animation, audio & video production.</p>
+    </div>
+  </section>
 
         <section class="l-Section">
           <h2 class="l-Section-title h3 u-hidden@sm-down">Profile</h2>

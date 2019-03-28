@@ -31,6 +31,12 @@ export const appRoutes: Routes = [
 
   {path: 'my-nav', component:MyNavComponent},
   {path: 'rolelogin', component:RoleloginComponent},
+  {
+    path:'',  
+    component: ViewComponent
+  },
+  
+
   
   {
     path: 'empInfo',
@@ -41,10 +47,7 @@ export const appRoutes: Routes = [
     path: 'empInfo/:id',
        component: EmpInfoComponent
   },
-  {
-    path: 'signin',
-    component:LoginComponent
-  },
+  
   {path: 'piechart', 
   component: PiechartComponent},
 

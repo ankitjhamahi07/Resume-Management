@@ -21,6 +21,7 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableModule, SliderModule, MessageService } from 'primeng/primeng';
 import { EmplistService } from './emplist.service';
+//import {EmpService} from '/home/nineleaps/Desktop/rms/rms/src/app/emp.service'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DropdownModule } from 'primeng/primeng';
 import { MultiSelectModule } from 'primeng/multiselect'
@@ -42,15 +43,24 @@ import { NotFoundComponentComponent } from './not-found-component/not-found-comp
 import { AngularFireModule } from '@angular/fire';
 //import {AngularFireDatabaseModule} from 'angularfire2/database';
 //import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+<<<<<<< HEAD
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
+=======
+import {AngularFireAuthModule} from '@angular/fire/auth';
+//import { LoginComponent } from './login/login.component';
+>>>>>>> fa454fa2985bbf67a18d16d252e04bbdd83257a0
 import { AuthService } from "src/app/auth.service";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { PrjDetailsComponent } from './prj-details/prj-details.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
+<<<<<<< HEAD
 //import { LoginRoleBasedComponent } from './login-role-based/login-role-based.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { RoleloginComponent } from './rolelogin/rolelogin.component';
+=======
+//import {FormsModule} from '@angular/forms';
+>>>>>>> fa454fa2985bbf67a18d16d252e04bbdd83257a0
 //import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 
 
@@ -98,25 +108,37 @@ export const firebaseConfig = {
     ContactComponent,
     ArchivedComponent,
     NotFoundComponentComponent,
-    LoginComponent,
+    //LoginComponent,
     PrjDetailsComponent,
     EditProjectComponent,
+<<<<<<< HEAD
     RoleloginComponent,
     //LoginRoleBasedComponent,
 
 
 
+=======
+    
+    
+    
+>>>>>>> fa454fa2985bbf67a18d16d252e04bbdd83257a0
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     //AngularFireAuth,
+    FormsModule,
     AngularFireAuthModule,
     // AngularFirestoreModule,
     //AngularFirestore,
     BrowserModule,
+    //FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+<<<<<<< HEAD
     FormsModule,
+=======
+        
+>>>>>>> fa454fa2985bbf67a18d16d252e04bbdd83257a0
     HttpClientModule,
     DataTablesModule,
     TableModule,
@@ -150,6 +172,7 @@ export const firebaseConfig = {
   entryComponents: [
     PrjDetailsComponent,
     EditProjectComponent
+
 
   ],
   schemas: [

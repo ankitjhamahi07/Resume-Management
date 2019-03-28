@@ -7,6 +7,7 @@ import { project } from './project.model';
 import { ApiResponse } from './api.response';
 
 import { map } from 'rxjs/operators';
+import { project1 } from './project1.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class ProjectService {
   dtOptions: DataTables.Settings = {};
   projectList: Observable<project[]>;
   newproject : project;
-  readonly ROOT_URL:string ='http://2e20cb72.ngrok.io/api';
+  readonly ROOT_URL:string ='http://aa4eccc3.ngrok.io/api';
 
   constructor(private http: HttpClient) { }
 
@@ -33,7 +34,7 @@ export class ProjectService {
 
   login()
   {
-    return this.http.get<any[]>('http://5f9d1284.ngrok.io'+'/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A49685%2F&state=MnwXDS2Qjayf4mG-ncoNOlmFmU66-ffiifNkGsdLPgI1');
+    return this.http.get<any[]>('http://aa4eccc3.ngrok.io'+'/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A49685%2F&state=MnwXDS2Qjayf4mG-ncoNOlmFmU66-ffiifNkGsdLPgI1');
   }
 
   getProjectDetails(id) {
@@ -80,7 +81,7 @@ let options = {
 
 //console.log(this.ROOT_URL+"\n"+'/Projects/1'+"\n"+ body.toString()+"\n"+options);
 
-    return this.http.put(this.ROOT_URL+'/ProjectsArchive/'+id,options);
+    return this.http.put( this.ROOT_URL+'/ProjectsArchive/'+id,options);
     
   }
 
@@ -111,8 +112,9 @@ let options = {
   }
 
 
-  postMember(addMembersData: project) {
-    return this.http.post(this.ROOT_URL + '/ProjectTeams/1', addMembersData);
+  postMember(addMembersData: any) {
+    console.log(addMembersData);
+    return this.http.post(this.ROOT_URL + '/ProjectTeams/'+addMembersData.ProjectId, addMembersData);
   }
 
 
@@ -122,7 +124,8 @@ let options = {
   }
 
   AddEmployee(formData: project) {
-    return this.http.post(this.ROOT_URL + '/ProjectTeams/'+formData.ProjectId, formData)
+    return this.http.post(this.ROOT_URL + '/ProjectTeams/'+formData.ProjectId, formData);
+   // 
     
   }
 
@@ -132,10 +135,10 @@ let options = {
   }
 
 
-  Delete(id:number){
+  Delete(pId:number, id:number){
     console.log(id);
   // return this.http.delete(this.ROOT_URL+ '/Project/'+data.EmployeeEmail+'/'+data.id);
-   return this.http.delete(this.ROOT_URL+ '/ProjectTeamsDelete/' + id);
+   return this.http.delete(this.ROOT_URL+ '/ProjectTeamsDelete/' +pId+'/'+ id);
   }
   
 

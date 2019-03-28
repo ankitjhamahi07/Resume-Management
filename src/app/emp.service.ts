@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { emp } from './emp.model';
+import {Tech} from 'src/app/tech.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,17 @@ export class EmpService {
   getEmployee()
   {
     return this.http.get<any>(this.baseUrl+'/Employees')
+  }
+
+  getEmployeeTechCount()
+  {
+    return this.http.get<any>(this.baseUrl+'/EmployeeTechCount'); 
+  }
+
+  getEmployeeProjectDetails(id:number)
+  { 
+    return this.http.get<any>(this.baseUrl+'/Employees/ProjectDetails/'+id);
+
   }
 
   getEmployeeList()

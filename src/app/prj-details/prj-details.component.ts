@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ChangeDetectorRef, ɵConsole } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 //import { MatDialog, MatDialogConfig,MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
@@ -21,7 +21,12 @@ export class PrjDetailsComponent implements OnInit {
 
   employee: project;
   state: string = 'small';
+  model: any = {};
   errorMessage: any;
+  tech:string[]=['Angular', 'Dot Net', 'Python', 'Java', 'C', 'C#', 'Big Data'];
+  SelectedTech: String;
+  start:Date;
+  end:Date;
   @ViewChild('f') form;
   animateMe() {
     this.state = (this.state === 'small' ? 'large' : 'small');
@@ -30,10 +35,12 @@ export class PrjDetailsComponent implements OnInit {
   projectDtl: project[];
   dataavailable: Boolean = false;
   projectDescription: string;
+  projectid:number;
   constructor(@Inject(MAT_DIALOG_DATA) public data,
     public dialogRef: MatDialogRef<PrjDetailsComponent>,
     private dataservice: ProjectService,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private dialog:MatDialog,
   ) { }
   ngOnInit() {
     this.LoadDataToProjectDetails(this.data);
@@ -62,26 +69,34 @@ export class PrjDetailsComponent implements OnInit {
 
 
   LoadDataToProjectDetails(id: number) {
-    console.log(id);
+    //console.log(id);
     this.dataservice.getProjectDetails(id).subscribe((tempdata) => {
-      console.log(tempdata);
+      //console.log(tempdata);
       this.projectDtl = tempdata as project [];
-      console.log(this.projectDtl);
+      //console.log(this.project.projectId)
+     // console.log(this.projectDtl);
       this.projectDescription = this.projectDtl[0].ProjectDescription;
+      this.projectid=this.projectDtl[0].ProjectId;
+      if(this.projectDescription=='')
+      {
+        this.toaster.error("No members yet");
+      }
+      console.log(this.projectDescription);
       if (this.projectDtl.length > 0) {
         this.dataavailable = true;
       }
       else {
         this.dataavailable = false;
+        this.toaster.error("Data is not available for this project.");
         console.log("No");
       }
-    }
+    },
+    
     )
-      , err => {
-        console.log(err);
-        console.log("SERVER");
-      }
+      
   }
+
+
   AddMember(form: NgForm) {
     // Save(form: NgForm) {
     //   this.details.postEmp(form.value).subscribe(res => {
@@ -106,18 +121,38 @@ export class PrjDetailsComponent implements OnInit {
     this.toaster.success('Data is successfully loaded', 'Data stored!');
   }
 
-  AddMemberToProject(form: NgForm, id: number) {
+  AddMemberToProject(form: NgForm) {
+
+    
+    //console.log(this.SelectedTech);
+   // this.SelectedTech=form.value.EmployeeTech;
+    form.value.EmployeeTech=this.SelectedTech;
+    form.value.EmployeeStartDate=this.start;
+    form.value.EmployeeEndDate=this.end;
+    console.log(form.value.EmployeeEmail);
+    console.log(form.value.EmployeeTech);
     console.log(form.value);
     this.dataservice.AddEmployee(form.value).subscribe(res => {
-      console.log(res.toString());
-     // this.resetForm(form);
+     // console.log(res.toString());
+     //this.resetForm(form);
+     this.toaster.success("Employee Added");
+     //this.dialogRef.close();
+     
+     //this.dialogRef.updatePosition();
+     //console.log(this.data);
+     //this.dialog.open(this.data);
+     //this.view(form.value.projectId);
+     this.ngOnInit();
+    // this.LoadDataToProjectDetails(this.data);
+     
     },
       err => {
-        this.ShowFail();
+        //this.ShowFail();
        // this.resetForm(form);
-        console.log("email invalid First  line");
-        console.log(err);
-        console.log("email invalid last  line");
+       //this.toaster.error("Email is invalid");
+        //console.log("email invalid First  line");
+        this.toaster.error();
+        //console.log("email invalid last  line");
 
       }
     );
@@ -127,12 +162,19 @@ export class PrjDetailsComponent implements OnInit {
 
   }
 
-  DeleteFromProject(id:number) {
+  
+
+  DeleteFromProject(pId:number, id:number) {
+
+     //let pId=this.projectid;
     console.log(id);
-    this.dataservice.Delete(id).subscribe(res => {
+    console.log("PID"+pId);
+    this.dataservice.Delete(pId, id).subscribe(res => {
+      this.ngOnInit();
       console.log("Deleted successfully!");
+      this.toaster.success("Employee deleted from Project");
     })
-    //this.LoadDataToProjectDetails(this.data);
+    this.LoadDataToProjectDetails(this.data);
   }
 
 }

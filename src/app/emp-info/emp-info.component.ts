@@ -6,8 +6,7 @@ import { EmpService } from '../emp.service';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { NgForm } from '@angular/forms';
 //import {DashComponent} from './dash.component';
-
-
+//   
 
 @Component({
   selector: 'app-emp-info',
@@ -24,6 +23,7 @@ export class EmpInfoComponent implements OnDestroy, OnInit {
   viewId: number;
   private sub: any;
   e: emp;
+  
 
 
   constructor(private details: EmpService, private route: ActivatedRoute) { }
@@ -92,12 +92,31 @@ export class EmpInfoComponent implements OnDestroy, OnInit {
     })
   }
 
-  ngOnDestroy() {
-
-    this.sub.unsubscribe();
-
-  }
+//   ngOnDestroy() {
+//   getEmployeeProjectDetails(id:number)
+//   {
 
 
+//     this.details.getEmployeeProjectDetails(id)
+//       .subscribe(data => {
+//         this.empProjects=data;
+//         //this.employee = this.e;
+        
+        
+//         console.log(this.empProjects);
+//         //console.log(data.EmployeeDesignation);
+//         this.isLoadingResults = false;
+//       });
 
-}
+//   }
+
+//   ngOnDestroy()
+//   {
+
+//     this.sub.unsubscribe();
+
+//   }
+
+
+
+// }
