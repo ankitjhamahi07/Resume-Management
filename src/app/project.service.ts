@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { project } from '/home/nineleaps/Desktop/rms/rms/src/app/project.model';
+import { project } from './project.model';
 //import 'rxjs/add/operator/map';
 //import 'rxjs/add/operator/catch';
-import { ApiResponse } from '/home/nineleaps/Desktop/rms/rms/src/app/api.response'
+import { ApiResponse } from './api.response';
 
 import { map } from 'rxjs/operators';
 
@@ -17,7 +17,7 @@ export class ProjectService {
   dtOptions: DataTables.Settings = {};
   projectList: Observable<project[]>;
   newproject : project;
-  readonly ROOT_URL:string ='http://5f9d1284.ngrok.io/api';
+  readonly ROOT_URL:string ='http://2e20cb72.ngrok.io/api';
 
   constructor(private http: HttpClient) { }
 

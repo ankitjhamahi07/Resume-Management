@@ -10,10 +10,10 @@ export class emp {
     EmployeeLanguage: string;
     EmployeeDesignation: Date;
     EmployeeSkill: string;
-    ProjectTitle:string;
-    ProjectDescription:string;
-    StartDate: Date;
-    EndDate: Date;
+    // ProjectTitle:string;
+    // ProjectDescription:string;
+    // StartDate: Date;
+    // EndDate: Date;
     
 
 }

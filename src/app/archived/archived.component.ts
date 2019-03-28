@@ -2,7 +2,7 @@ import { Component, AfterViewInit, OnDestroy, OnInit, ViewChild, ViewChildren  }
 import { HttpClient } from '@angular/common/http';
 import { ProjectService } from '../project.service';
 import { Router } from '@angular/router';
-import { project } from '/home/nineleaps/Desktop/rms/rms/src/app/project.model'
+import { project } from '../project.model';
 import { DataTableDirective} from 'angular-datatables';
 import { Subject } from 'rxjs';
 //import 'rxjs/add/operator/map';

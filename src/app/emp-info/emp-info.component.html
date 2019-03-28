@@ -1,126 +1,216 @@
-
 <div *ngIf="employee">
-<div id="resume">
-<article class="l-Wrapper">
+  <div id="resume">
+    <article class="l-Wrapper">
 
-  <div class="l-Header">
-    <div class="l-Header-col">
-      <a href="http://www.Ankitstrieder.com" target="_blank">
-        <h1 class="Title">
-          <span class="u-shadow">
-            {{employee[0].EmployeeName}}
-          </span>
-          <span class="Title-sub"> {{employee[0].EmployeeDesignation}}</span>
-        </h1>
+      <div class="l-Header">
+        <div class="l-Header-col">
+          <a href="http://www.Ankitstrieder.com" target="_blank">
+            <h1 class="Title">
+              <span class="u-shadow">
+                {{this.employee.EmployeeName}}
+              </span>
+              <span class="Title-sub"> {{this.employee.EmployeeDesignation}}</span>
+            </h1>
+          </a>
+        </div>
+        <div class="l-Header-col Contact">
+          <div>Seattle, WA</div>
+          <div><a class="u-link" href="http://Ankitstrieder.com/" target="_blank">www.nineleaps.com</a></div>
+          <div><a class="u-link" href="mailto:Ankit.strieder@gmail.com"
+              target="_blank">{{this.employee.EmployeeEmail}}</a></div>
+        </div>
+      </div>
+
+      <a name="personal information">
+
+        <section class="l-Section">
+          <h2 class="l-Section-title h3 u-hidden@sm-down">Personal Information</h2>
+          <div class="l-Section-content">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+            <button style="text-align:right" (click)="show()">Edit</button>
+            <br>
+            <form #form="ngForm" (submit)="Save(form)">
+              <input type="hidden" name="EmployeeId" #EmployeeId="ngModel" [(ngModel)]="this.employee.EmployeeId">
+              First name:&nbsp;
+              <input type="text" [readonly]="bool" name="EmployeeName" #EmployeeName="ngModel"
+                [(ngModel)]="this.employee.EmployeeName">
+              &nbsp;
+              Designation &nbsp;
+              <input type="text" [readonly]="bool" name="EmployeeDesignation" #EmployeeDesignation="ngModel"
+                [(ngModel)]="this.employee.EmployeeDesignation">
+              <br> <br>
+              Phone&nbsp;
+              <input type="text" [readonly]="bool" name="EmployeePhone" #EmployeePhone="ngModel"
+                [(ngModel)]="this.employee.EmployeePhone">
+              &nbsp;Email &nbsp;
+              <input type="text" [readonly]="bool" name="EmployeeEmail" #EmployeeEmail="ngModel"
+                [(ngModel)]="this.employee.EmployeeEmail">
+              <br> <br>
+              Address:&nbsp;
+              <input type="text" [readonly]="bool" name="EmployeeAddress" #EmployeeAddress="ngModel"
+                [(ngModel)]="this.employee.EmployeeAddress">
+              &nbsp;
+              DOB:&nbsp;
+              <input type="text" [readonly]="bool" name="EmployeeDOB" #EmployeeDOB="ngModel"
+                [(ngModel)]="this.employee.EmployeeDOB">
+              <br> <br>
+              Skill:
+              <input type="text" [readonly]="bool" name="EmployeeSkill" #EmployeeSkill="ngModel"
+                [(ngModel)]="this.employee.EmployeeSkill">
+              <br>
+              <br>
+              <button [hidden]="bool" type="submit">Save!</button>
+              &nbsp;
+
+            </form>
+          </div>
+        </section>
       </a>
+
+
+      <a name="profile">
+
+        <section class="l-Section">
+          <h2 class="l-Section-title h3 u-hidden@sm-down">Profile</h2>
+          <div class="l-Section-content">
+            <p>I specialize in component based {{this.employee.EmployeeSkill}} architecture, with a focus on
+              maintainability and scalability, an agile approach.</p>
+          </div>
+        </section>
+      </a>
+
+      <a name="skills">
+        <section class="l-Section">
+          <h2 class="l-Section-title h3">Skills</h2>
+          <div class="l-Section-content">
+            <ul>
+              <li>Highly skilled in creating performant <strong class="Tag">HTML</strong>, <strong
+                  class="Tag">{{this.employee.EmployeeSkill}}</strong></li>
+              <li>Passionate about <strong class="Tag">CSS Methodologies</strong> and <strong class="Tag">CSS
+                  Preprocessors</strong></li>
+              <li>Skilled in creating <strong class="Tag">Component Libraries</strong>, <strong
+                  class="Tag">Prototypes</strong> and <strong class="Tag">Style Guides</strong></li>
+              <li>Experienced with <strong class="Tag">Templating Languages</strong> and <strong
+                  class="Tag">JavaScript</strong></li>
+              <li>Proficient with <strong class="Tag">Task Runners</strong> and <strong class="Tag">Package
+                  Managers</strong> and <strong class="Tag">Version Control Systems</strong></li>
+              <li>Knowledgeable about <strong class="Tag">User Experience</strong>, <strong
+                  class="Tag">Accessibility</strong>, <strong class="Tag">Performance</strong>, <strong
+                  class="Tag">Responsive Web Development</strong> with a <strong class="Tag">Mobile First</strong>
+                approach, <strong class="Tag">Cross-Browser Compatibilities</strong> and <strong class="Tag">Progressive
+                  Enhancement</strong>.</li>
+            </ul>
+          </div>
+        </section>
+      </a>
+
+      <section class="l-Section">
+        <h2 class="l-Section-title h3">Experience</h2>
+        <div class="l-Section-content">
+          <h3>{{this.employee.EmployeeDesignation}}</h3>
+          <a class="u-link" href="http://www.nineleaps.com/" target="_blank">{{this.employee.EmployeeAddress}}</a>
+          (WA)<br> May 2017 - present
+
+          <h3>Front-end Developer</h3>
+          <a class="u-link" href="https://www.nineleaps.com/" target="_blank">Snap Fashion, London</a> (UK)<br>
+          {{this.employee.StartDate}}-{{this.employee.EndDate}}
+          <ul>
+            <li>Re-architected CSS/HTML codebase of the responsive Snap Fashion website for better maintainability and
+              performance.</li>
+            <li>Introduced Grunt, Bower and npm to automate common tasks, optimize frontend assets and manage third
+              party packages.</li>
+            <li>Created and maintained a style guide to use as a reference for our design language.</li>
+            <li>Delivered front-end work for various external and internal projects to the backend team.</li>
+            <li>Built a JavaScript widget for integration of product feeds on third party websites using the Snap
+              Fashion API.</li>
+            <li>Developed prototypes including a Chrome extension and browser bookmarklet.</li>
+            <li>Offered guidance and support to the design team, advising on core web design principles, best practice
+              and work flow.
+            </li>
+          </ul>
+
+          <h3>Web Design & Interface Specialist</h3>
+          <a class="u-link" href="http://www.johnhenry.net/" target="_blank">JohnHenry, London</a> (UK)<br> Jun 2010 -
+          May 2014
+          <ul>
+            <li>Working within a team of 16+ I’ve established myself as a front-end developer with a strong focus on web
+              standards, semantics, accessibility and progressive enhancement (HTML/CSS).</li>
+            <li>Designed and/or built Wordpress themes as well as Shopify themes from scratch or customized them
+              depending on the client’s needs.</li>
+            <li>Headed the design team and designed simple and clean user interfaces.
+            </li>
+          </ul>
+
+          <h3>Web Specialist</h3>
+          <a class="u-link" href="http://www.johnhenry.net/" target="_blank">JohnHenry, London</a> (UK)<br> Oct 2009 -
+          Jun 2010
+          <ul>
+            <li>Designed client websites and features as well as customized social media channels to improve their
+              online presence.</li>
+            <li>Content management, including image processing for the web.</li>
+            <li>Built HTML newsletters and managed the distribution through the in house newsletter management system.
+            </li>
+            <li>Assisted the development team with HTML and CSS updates
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="l-Section">
+        <h2 class="l-Section-title h3">Education</h2>
+        <div class="l-Section-content">
+          <h3>BSc, Media-technology and -design</h3>
+          <a class="u-link" href="https://www.fh-ooe.at/en/hagenberg-campus/" target="_blank">University of Applied
+            Sciences Campus Hagenberg</a> (AUT)<br> 2006 - 2009
+          <p>A full-time degree programme that provides the technical expertise as well as the design and communication
+            skills in areas including web (backend and frontend development), multimedia, 3D modelling, animation, audio
+            & video production.</p>
+        </div>
+      </section>
+
+      <section class="l-Section u-hidden@print">
+        <h2 class="l-Section-title h3">Interests</h2>
+        <div class="l-Section-content">
+          <p>User Experience, Accessibility, Web Standards, Automatization, Technology, Simplicity, Snowboarding,
+            Bouldering, Coffee, Food, Art, Music, Movies, Traveling, Cabins, Plants, Goats, Chickens</p>
+        </div>
+      </section>
+    </article>
+
+    <br>
+    <br>
+    <div class="row justify-content-center">
+      <button type="submit" class="btn btn-info btn-lg" (click)="downloadPDF()" target="_blank">Download Resume
+      </button>
     </div>
-    <div class="l-Header-col Contact">
-      <div>Seattle, WA</div>
-      <div><a class="u-link" href="http://Ankitstrieder.com/" target="_blank">www.nineleaps.com</a></div>
-      <div><a class="u-link" href="mailto:Ankit.strieder@gmail.com" target="_blank">{{employee[0].EmployeeEmail}}</a></div>
+
+    <div class="l-Wrapper u-keyline">
+      <div class="l-Footer">
+        <div class="l-Footer-col">
+          <strong class="Tag">AJ. Strieder</strong>
+        </div>
+        <div class="l-Footer-col Contact">
+          <a href="http://Ankitstrieder.com" target="_blank">Ankitstrieder.com</a>
+          <a href="mailto:Ankit.strieder@gmail.com" target="_blank">Ankit.strieder@gmail.com</a>
+        </div>
+      </div>
     </div>
   </div>
-
-  <a name ="profile">
-
-  <section class="l-Section">
-    <h2 class="l-Section-title h3 u-hidden@sm-down">Profile</h2>
-    <div class="l-Section-content">
-      <p>I specialize in component based {{employee[0].EmployeeSkill}} architecture, with a focus on maintainability and scalability, an agile approach.</p>
-    </div>
-  </section>
-</a>
-
-<a name ="skills">
-  <section class="l-Section">
-    <h2 class="l-Section-title h3">Skills</h2>
-    <div class="l-Section-content">
-      <ul>
-        <li>Highly skilled in creating performant <strong class="Tag">HTML</strong>, <strong class="Tag">{{employee[0].EmployeeSkill}}</strong></li>
-        <li>Passionate about <strong class="Tag">CSS Methodologies</strong> and <strong class="Tag">CSS Preprocessors</strong></li>
-        <li>Skilled in creating <strong class="Tag">Component Libraries</strong>, <strong class="Tag">Prototypes</strong> and <strong class="Tag">Style Guides</strong></li>
-        <li>Experienced with <strong class="Tag">Templating Languages</strong> and <strong class="Tag">JavaScript</strong></li>
-        <li>Proficient with <strong class="Tag">Task Runners</strong> and <strong class="Tag">Package Managers</strong> and <strong class="Tag">Version Control Systems</strong></li>
-        <li>Knowledgeable about <strong class="Tag">User Experience</strong>, <strong class="Tag">Accessibility</strong>, <strong class="Tag">Performance</strong>, <strong class="Tag">Responsive Web Development</strong> with a <strong class="Tag">Mobile First</strong>          approach, <strong class="Tag">Cross-Browser Compatibilities</strong> and <strong class="Tag">Progressive Enhancement</strong>.</li>
-      </ul>
-    </div>
-  </section> 
-</a>
-
-  <section class="l-Section">
-    <h2 class="l-Section-title h3">Experience</h2>
-    <div class="l-Section-content">
-      <h3>{{employee[0].EmployeeDesignation}}</h3>
-      <a class="u-link" href="http://www.nineleaps.com/" target="_blank">{{employee[0].EmployeeAddress}}</a> (WA)<br> May 2017 - present
-
-      <h3>Front-end Developer</h3>  
-      <a class="u-link" href="https://www.nineleaps.com/" target="_blank">Snap Fashion, London</a> (UK)<br> {{employee[0].StartDate}}-{{employee[0].EndDate}}
-      <ul>
-        <li>Re-architected CSS/HTML codebase of the responsive Snap Fashion website for better maintainability and performance.</li>
-        <li>Introduced Grunt, Bower and npm to automate common tasks, optimize frontend assets and manage third party packages.</li>
-        <li>Created and maintained a style guide to use as a reference for our design language.</li>
-        <li>Delivered front-end work for various external and internal projects to the backend team.</li>
-        <li>Built a JavaScript widget for integration of product feeds on third party websites using the Snap Fashion API.</li>
-        <li>Developed prototypes including a Chrome extension and browser bookmarklet.</li>
-        <li>Offered guidance and support to the design team, advising on core web design principles, best practice and work flow.
-        </li>
-      </ul>
-
-      <h3>Web Design & Interface Specialist</h3>
-      <a class="u-link" href="http://www.johnhenry.net/" target="_blank">JohnHenry, London</a> (UK)<br> Jun 2010 - May 2014
-      <ul>
-        <li>Working within a team of 16+ I’ve established myself as a front-end developer with a strong focus on web standards, semantics, accessibility and progressive enhancement (HTML/CSS).</li>
-        <li>Designed and/or built Wordpress themes as well as Shopify themes from scratch or customized them depending on the client’s needs.</li>
-        <li>Headed the design team and designed simple and clean user interfaces.
-        </li>
-      </ul>
-
-      <h3>Web Specialist</h3>
-      <a class="u-link" href="http://www.johnhenry.net/" target="_blank">JohnHenry, London</a> (UK)<br> Oct 2009 - Jun 2010
-      <ul>
-        <li>Designed client websites and features as well as customized social media channels to improve their online presence.</li>
-        <li>Content management, including image processing for the web.</li>
-        <li>Built HTML newsletters and managed the distribution through the in house newsletter management system.</li>
-        <li>Assisted the development team with HTML and CSS updates
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="l-Section">
-    <h2 class="l-Section-title h3">Education</h2>
-    <div class="l-Section-content">
-      <h3>BSc, Media-technology and -design</h3>
-      <a class="u-link" href="https://www.fh-ooe.at/en/hagenberg-campus/" target="_blank">University of Applied Sciences Campus Hagenberg</a> (AUT)<br> 2006 - 2009
-      <p>A full-time degree programme that provides the technical expertise as well as the design and communication skills in areas including web (backend and frontend development), multimedia, 3D modelling, animation, audio & video production.</p>
-    </div>
-  </section>
-
-  <section class="l-Section u-hidden@print">
-    <h2 class="l-Section-title h3">Interests</h2>
-    <div class="l-Section-content">
-      <p>User Experience, Accessibility, Web Standards, Automatization, Technology, Simplicity, Snowboarding, Bouldering, Coffee, Food, Art, Music, Movies, Traveling, Cabins, Plants, Goats, Chickens</p>
-    </div>
-  </section>
-</article>
-
-<br>
-<br>
-<div class="row justify-content-center">
-  <button type="submit" class="btn btn-info btn-lg" (click)="downloadPDF()" target="_blank">Download Resume </button>
 </div>
-
-<div class="l-Wrapper u-keyline">
-  <div class="l-Footer">
-    <div class="l-Footer-col">
-      <strong class="Tag">AJ. Strieder</strong>
-    </div>
-    <div class="l-Footer-col Contact">
-      <a href="http://Ankitstrieder.com" target="_blank">Ankitstrieder.com</a>
-      <a href="mailto:Ankit.strieder@gmail.com" target="_blank">Ankit.strieder@gmail.com</a>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-

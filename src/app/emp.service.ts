@@ -9,10 +9,16 @@ import { emp } from './emp.model';
   providedIn: 'root'
 })
 export class EmpService {
-
+  formData: emp;
 
   constructor(private http: HttpClient) { }  
-  baseUrl: string = 'http://5f9d1284.ngrok.io/api'; 
+  baseUrl: string = 'http://c4a8145f.ngrok.io/api'; 
+
+  updateEmployeeDetails(formData:emp,id:number){
+    console.log(id);
+    console.log(formData);
+    return this.http.put(this.baseUrl + '/Employees/' + id, this.formData);
+  }
 
   getEmployeeById(id: number) {  
     return this.http.get<any>(this.baseUrl + '/Employees/' + id);  

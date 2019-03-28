@@ -1,6 +1,6 @@
 import { NgModule, Component, OnInit, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import { EmplistService } from '/home/nineleaps/Desktop/rms/rms/src/app/emplist.service'
-import { Emplist } from '/home/nineleaps/Desktop/rms/rms/src/app/emplist.model'
+import { EmplistService } from '../emplist.service';
+import { Emplist } from '../emplist.model';
 import {TableModule} from 'primeng/table';
 import { SelectItem } from 'primeng/primeng';
 import {MessageService} from 'primeng/api';

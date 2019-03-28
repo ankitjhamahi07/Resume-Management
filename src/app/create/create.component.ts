@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProjectService } from '../project.service';
 import { Router } from '@angular/router';
-import { project } from '/home/nineleaps/Desktop/rms/rms/src/app/project.model'
+import { project } from '../project.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AppRoutingModule } from '/home/nineleaps/Desktop/rms/rms/src/app/app-routing.module'
+import { AppRoutingModule } from '../app-routing.module';
 import {ToastrService} from 'ngx-toastr';
 import {DatePipe} from '@angular/common';
 @Component({

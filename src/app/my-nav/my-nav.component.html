@@ -1,8 +1,10 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+<mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" >
+  <!-- #drawer class="sidenav" fixedInViewport="true"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
+      [opened]="!(isHandset$ | async)"> -->
     <mat-toolbar color ="blue"> RMS </mat-toolbar>
     <mat-nav-list>
         <h3 matSubheader> Employee Info </h3>
@@ -23,36 +25,8 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-<!--       
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon" color="black">Menu</mat-icon>
-      </button>
 
-      <div>
-      <span style="float:left;position:relative">Resume Management System</span>
-      <span style="float: right;position:relative"> 
-        <button type="button">Logout</button>
-      </span>
-      </div>
-      
-    </mat-toolbar> -->
     <mat-toolbar color="primary">
-      <!-- <mat-toolbar-row>
-        <span>Custom Toolbar</span>
-      </mat-toolbar-row>
-    
-      <mat-toolbar-row>
-        <span>Second Line</span>
-        <span class="example-spacer"></span>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>
-      </mat-toolbar-row> -->
-    
       <mat-toolbar-row>
           <button
           type="button"
@@ -60,20 +34,17 @@
           mat-icon-button
           (click)="drawer.toggle()"
           *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon" color="black">Menu &nbsp;</mat-icon>
+          <mat-icon aria-label="Side nav toggle icon" color="black">Menu &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</mat-icon>
         </button>
-        <span>Resume Management System</span>
+        <button mat-icon-button (click)="snav.toggle()"><i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+        <span>  &nbsp; Resume Management System</span>
         <span class="example-spacer"></span>
         <button *ngIf="user" (click)="logout()" class="btn btn-info" aria-hidden="false" aria-label="Example heart icon">Logout</button>
-        <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon> -->
-      </mat-toolbar-row>
+             </mat-toolbar-row>
     </mat-toolbar>
     
-    
-    <!-- Copyright 2019 Google Inc. All Rights Reserved.
-        Use of this source code is governed by an MIT-style license that
-        can be found in the LICENSE file at http://angular.io/license -->
-    <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+

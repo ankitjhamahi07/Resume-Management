@@ -3,10 +3,11 @@ import { Component, ɵConsole } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {HttpErrorResponse} from '@angular/common/http';
 import { Form } from '@angular/forms';
-import {EmpService} from '/home/nineleaps/Desktop/rms/rms/src/app/emp.service';
-import {emp} from '/home/nineleaps/Desktop/rms/rms/src/app/emp.model';
+
+import {emp} from '../emp.model';
 import { Router } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import { EmpService } from '../emp.service';
 
 @Component({
   selector: 'app-contactus',
